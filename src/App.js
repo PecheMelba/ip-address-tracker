@@ -1,24 +1,27 @@
 import logo from './logo.svg';
-import './App.css';
+import './styles/style-mobile.css';
 
-function App() {
+import Ip_ui from './components/Ip_ui';
+import Map from './components/Map';
+
+import React, { useState, useEffect } from 'react';
+
+
+function App() 
+{
+  const [ipInfos, SetIpInfos] = useState({});
+
+  function update_ip_infos(_infos)
+  {
+    SetIpInfos(_infos);
+    console.log(_infos);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Ip_ui sendIpInfos = {update_ip_infos} />      
+      <Map ip_informations = {ipInfos}/>
+    </div>    
   );
 }
 
